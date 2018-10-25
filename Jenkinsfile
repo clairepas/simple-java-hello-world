@@ -30,8 +30,8 @@ spec:
     hostPath:
       path: /var/run/docker.sock
 """
-    }
   }
+}
 
 
 // Configuration à modifier
@@ -48,6 +48,11 @@ spec:
 	  sh 'docker run my-app:$BUILD_NUMBER'
 	}
       }
+    }
+  }
+  post {
+    always {
+      junit 'target/surefire-reports/*.xml'
     }
   }
 }
